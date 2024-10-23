@@ -1,5 +1,3 @@
-
-
 class Controler {
 
   constructor(model){
