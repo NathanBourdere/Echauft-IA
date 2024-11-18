@@ -2,8 +2,10 @@ class ViewNote {
     constructor() {
         this.searchBar = document.getElementById('searchInput');
         this.noteList = document.getElementById('note-list');
-        this.notes = [ {title: "Note 1", smallDescription: "Description 1" ,description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ipsa suscipit sit eum tempore nihil commodi dolores! Nostrum, iusto veniam. Animi, iure? Laudantium sint harum fugiat aliquam, amet eos nisi?" }, {title: "Note 2", smallDescription: "Description 2" ,description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ipsa suscipit sit eum tempore nihil commodi dolores! Nostrum, iusto veniam. Animi, iure? Laudantium sint harum fugiat aliquam, amet eos nisi?" }, {title: "Note 3", smallDescription: "Description 3" ,description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ipsa suscipit sit eum tempore nihil commodi dolores! Nostrum, iusto veniam. Animi, iure? Laudantium sint harum fugiat aliquam, amet eos nisi?" }, {title: "Note 4", smallDescription: "Description 4" ,description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ipsa suscipit sit eum tempore nihil commodi dolores! Nostrum, iusto veniam. Animi, iure? Laudantium sint harum fugiat aliquam, amet eos nisi?" }, {title: "Note 5", smallDescription: "Description 5" ,description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ipsa suscipit sit eum tempore nihil commodi dolores! Nostrum, iusto veniam. Animi, iure? Laudantium sint harum fugiat aliquam, amet eos nisi?" } ];
-
+        this.noteGenerate = document.getElementById('noteGenerate');
+        this.noteAdd = document.getElementById('noteAdd');
+        this.notes = [];
+    
         this.displayNotes();
     }
 
@@ -18,14 +20,12 @@ class ViewNote {
         let titleInput = prompt('Titre de la note');
         let smallDescriptionInput = prompt('Description courte');
         let descriptionInput = prompt('Description complète');
-
-        this.notes.push({title: titleInput, smallDescription: smallDescriptionInput, description: descriptionInput});
+        this.notes.push(new ModelNote(titleInput, smallDescriptionInput, descriptionInput))
         this.displayNotes();
     }
 
     displayNotes() {
         this.noteList.innerHTML = '';
-
         this.notes.forEach(note => {
             const noteItem = document.createElement('div');
             noteItem.className = 'd-flex flex-column align-items-start p-2 bg-white rounded shadow-sm mb-3';
@@ -39,11 +39,11 @@ class ViewNote {
 
             const noteName = document.createElement('p');
             noteName.className = 'fw-bold m-0';
-            noteName.textContent = note.title;
+            noteName.textContent = note.getTitle();
 
             const notePart = document.createElement('p');
             notePart.className = 'text-muted m-0';
-            notePart.textContent =  note.smallDescription;
+            notePart.textContent =  note.getSmallDescription();
 
             const detailButton = document.createElement('button');
             detailButton.className = 'btn btn-dark btn-sm ms-auto';
@@ -64,7 +64,7 @@ class ViewNote {
             detailsItem.style.backgroundColor = 'lightgrey';
             detailsItem.style.width = '100%';
             detailsItem.style.padding = '8px';
-            detailsItem.textContent = `${note.description}`;
+            detailsItem.textContent = `${note.getDescription()}`;
 
             // Assemblage des éléments
             noteDetails.appendChild(noteName);
@@ -77,9 +77,6 @@ class ViewNote {
             noteItem.appendChild(detailsItem);
 
             this.noteList.appendChild(noteItem);
-        });
-        noteAdd.addEventListener('click', () => {
-            this.addNote();
         });
     }
 }

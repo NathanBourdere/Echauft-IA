@@ -5,10 +5,23 @@ class ModelNote extends Observable {
         this.smallDescription = smallDescription;
         this.description = description;
     }
-
-    getByTitle(title){
-        this.setChanged();
-        this.notifyObservers(title);
+    setByTitle(title){
+        this.title = title;
+    }
+    setBySmallDescription(smallDescription){
+        this.smallDescription = smallDescription;
+    }
+    setByDescription(description){
+        this.description = description;
+    }
+    getTitle(){
+        return this.title;
+    }
+    getSmallDescription(){
+        return this.smallDescription;
+    }
+    getDescription(){
+        return this.description;
     }
     
 }
