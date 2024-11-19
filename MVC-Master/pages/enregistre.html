@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echauff'IA</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body id="body-pd" class="bg-light d-flex flex-column align-items-center" style="min-height: 100vh;">
 
     <!-- Haut de page -->
-    <header id="header" class=" header d-flex justify-content-between align-items-center p-3 w-100 bg-secondary text-white">
+    <header id="header" class="header d-flex justify-content-between align-items-center p-3 w-100 bg-secondary text-white">
         <button class="btn btn-link text-white" type="button">
             <i class="bi bi-list" style="font-size: 1.5rem;"></i>
         </button>
-        <h1 class="h4 m-0">Echauff'IA</h1>
+        <h1 class="h4 m-0">Mes Echauffements enregistrés</h1>
         <button class="btn btn-link text-white" type="button">
             <i class="bi bi-person" style="font-size: 1.5rem;"></i>
         </button>
@@ -24,15 +24,22 @@
 
     <!-- Contenu principal -->
     <main class="flex-grow-1 text-center p-3" style="max-width: 500px;">
-        <h2 class="fw-bold">Bienvenue !</h2>
         
-        <!-- Section des objectifs -->
-        <div id="objectives" class="my-3 p-3 bg-success text-white rounded">
-            <p class="mb-1">Objectifs :</p>
-            <p class="fw-bold text-white">Préparation à un semi-marathon</p>
+        <!-- Barre de recherche -->
+        <div class="input-group my-3">
+            <span class="input-group-text bg-white border-0">
+                <i class="bi bi-search"></i>
+            </span>
+            <input type="text" class="form-control" placeholder="Recherche" id="searchInput">
         </div>
 
-  </div>
+        <!-- <button id="noteGenerate" class="btn btn-primary my-3">Générer des notes</button> -->
+        <!-- Liste des notes -->
+        <div id="echauffement-list" class="d-flex flex-column gap-3"></div>
+
+        <button id="echauffAdd" class="btn btn-link text-white" type="button">
+            <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem;"></i>
+        </button>
     </main>
 
     <!-- Pied de page -->
@@ -40,29 +47,30 @@
         <a href="note.html" class="btn btn-link text-white">
             <i class="bi bi-clipboard" style="font-size: 1.5rem;"></i>
         </a>        
-        <a href="listEntrainements.html" class="btn btn-link text-white" type="button">
+        <a href="listEntrainements.html" class="btn btn-link text-white">
             <i class="fa fa-dumbbell" style="font-size: 1.5rem;"></i>
             
         </a>
-        <button class="btn btn-link text-white" type="button">
+        <a href="accueil.html" class="btn btn-link text-white">
             <i class="bi bi-arrow-up-circle-fill" style="font-size: 1.5rem;"></i>
-        </button>
+        </a>
         <button class="btn btn-link text-white" type="button">
             <i class="bi bi-map" style="font-size: 1.5rem;"></i>
         </button>
-        <a href="enregistre.html" class="btn btn-link text-white" >
+        <button class="btn btn-link text-white" type="button">
             <i class="bi bi-trophy" style="font-size: 1.5rem;"></i>
-        </a>
+        </button>
         
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script defer src="../js/utils.js"></script>
-    <script defer src="../js/models/modelAccueil.js"></script>
-    <script defer src="../js/views/viewAccueil.js"></script>
-    <script defer src="../js/controlers/controlerAccueil.js"></script>
-    <script defer src="../js/mainAccueil.js"></script>
+    <script defer src="../js/models/modelEnregistre.js"></script>
+    <script defer src="../js/views/viewEnregistre.js"></script>
+    <script defer src="../js/controlers/controlerEnregistre.js"></script>
+    <script defer src="../js/mainEnregistre.js"></script>
+    <!-- Bootstrap Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
 </body>
 </html>
