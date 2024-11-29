@@ -39,6 +39,12 @@ class ControlerNote {
                 }
                 this.view.displayNotes()
         });
-
+        this.view.noteAdd.addEventListener("click", (e) => {
+            let titleInput = prompt('Titre de la note');
+            let smallDescriptionInput = prompt('Description courte');
+            let descriptionInput = prompt('Description complète');
+            this.view.notes.push(new ModelNote(titleInput, smallDescriptionInput, descriptionInput));
+            this.view.displayNotes();
+        });
     }
 }

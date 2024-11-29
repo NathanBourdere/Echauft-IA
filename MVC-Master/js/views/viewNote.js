@@ -13,16 +13,11 @@ class ViewNote {
         const detailsDiv = noteItem.querySelector('.details');
         detailsDiv.classList.toggle('d-none');
     }
-    removeNote(noteItem) {
-        noteItem.remove();
-    }
-    addNote() {
-        let titleInput = prompt('Titre de la note');
-        let smallDescriptionInput = prompt('Description courte');
-        let descriptionInput = prompt('Description complète');
-        this.notes.push(new ModelNote(titleInput, smallDescriptionInput, descriptionInput))
+    removeNote(elem) {
+        this.notes = this.notes.filter(uneNote => uneNote !== elem);
         this.displayNotes();
     }
+
 
     displayNotes() {
         this.noteList.innerHTML = '';
@@ -55,7 +50,7 @@ class ViewNote {
             removeButton.className = 'btn btn-danger btn-sm ms-auto';
             removeButton.textContent = 'remove';
             removeButton.addEventListener('click', () => {
-                this.removeNote(noteItem);
+                this.removeNote(note);
             });
 
             // Détails cachés
