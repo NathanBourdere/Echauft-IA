@@ -23,14 +23,7 @@ class ControlerEchauff {
         const noteObserver = new UpdateNotes(this.view);
         this.model.addObservers(noteObserver);
 
-        // action
-
-        //je veux ajouter un create notes 
-
-        //je veux generer des notes aléatoires
         this.view.echauffAdd.addEventListener("click", (e) => {
-
-
 
             let dateInput = prompt("Date de l'échauffement");
             let objectifInput = prompt('Objectif de l\'échauffement');
